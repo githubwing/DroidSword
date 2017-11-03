@@ -11,6 +11,8 @@ import android.widget.TextView
 import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XC_LoadPackage
+import net.androidwing.droidsword.func.TextViewChanger
+import net.androidwing.droidsword.func.ViewEnabler
 import net.androidwing.droidsword.utils.LogUtils
 
 /**
@@ -37,41 +39,14 @@ class ViewClickedHooker : IHooker {
 
     })
 
-
     XposedHelpers.findAndHookMethod(View::class.java,
         "onTouchEvent",
         MotionEvent::class.java, object : XC_MethodHook() {
       override fun afterHookedMethod(param: MethodHookParam?) {
         super.afterHookedMethod(param)
         val targetView = param?.thisObject as View
-
-        //有响应事件的不可修改
-        if(targetView.isClickable){
-          LogUtils.e("this view is clickable, pass")
-          return
-        }
-
-        val event = param.args!![0] as MotionEvent
-
-        if (event.action == MotionEvent.ACTION_DOWN) {
-
-          if (targetView is TextView) {
-            LogUtils.e("find textView target")
-            if(targetView is EditText){
-
-              LogUtils.e("this view is editText ,pass")
-              return
-            }
-            val textView = targetView as TextView
-
-            val context = textView.context
-            val editText = EditText(context)
-            AlertDialog.Builder(context).setView(editText).setNegativeButton("取消"
-            ) { p0, p1 -> }.setPositiveButton("确定") { p0, p1 ->
-              textView.text = editText.text.toString()
-            }.show()
-          }
-
+        if (true) {
+          showChangeTextDialog(targetView, param)
         }
       }
 
@@ -79,16 +54,25 @@ class ViewClickedHooker : IHooker {
 
   }
 
-  /**
-   * 灰色按钮克星，
-   * TODO moren 默认开启待添加配置文件
-   */
   private fun antiDisable(view: View) {
+    //TODO 默认开启待添加配置文件
     if (true) {
-      if (view.isEnabled.not()) {
-        view.isEnabled = true
-      }
+      ViewEnabler.antiDisable(view)
     }
   }
+
+  /**
+   * 文本修改神器功能
+   */
+  private fun showChangeTextDialog(targetView: View,
+      param: XC_MethodHook.MethodHookParam) {
+    //TODO 默认开启待添加配置文件
+    val event = param.args!![0] as MotionEvent
+
+    if (true) {
+      TextViewChanger.showChangeDialog(targetView, event)
+    }
+  }
+
 
 }
