@@ -33,6 +33,7 @@ object TextViewChanger{
 
         val context = textView.context
         val editText = EditText(context)
+        editText.setText(textView.text)
         AlertDialog.Builder(context).setView(editText).setNegativeButton("取消"
         ) { p0, p1 -> }.setPositiveButton("确定") { p0, p1 ->
           textView.text = editText.text.toString()
