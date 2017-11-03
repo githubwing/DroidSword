@@ -9,3 +9,7 @@
 ## 2.灰色按钮克星
 
 ![](https://github.com/githubwing/DroidSword/raw/master/img/pic2.gif)
+
+## 3.文字修改神器
+
+![](https://github.com/githubwing/DroidSword/raw/master/img/pic3.gif)
