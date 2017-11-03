@@ -6,8 +6,7 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.view.MotionEvent
 import android.view.View
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XC_LoadPackage
@@ -29,12 +28,36 @@ class ViewClickedHooker : IHooker {
         val event = param.args!![0] as MotionEvent
         if (event.action == MotionEvent.ACTION_UP) {
 
-          val listener = XposedHelpers.getObjectField(XposedHelpers.getObjectField(view,"mListenerInfo"),"mOnClickListener").javaClass.name
+          val listener = XposedHelpers.getObjectField(
+              XposedHelpers.getObjectField(view, "mListenerInfo"),
+              "mOnClickListener").javaClass.name
 
-          ActivityHooker.setActionInfoToMenu("", "${view.javaClass.name} ${view.id} \nListener: $listener")
+          ActivityHooker.setActionInfoToMenu("",
+              "${view.javaClass.name} ${view.id} \nListener: $listener")
 
           antiDisable(view)
 
+
+        }
+      }
+
+    })
+
+    XposedHelpers.findAndHookMethod(View::class.java,
+        "dispatchTouchEvent",
+        MotionEvent::class.java, object : XC_MethodHook() {
+      override fun afterHookedMethod(param: MethodHookParam?) {
+        super.afterHookedMethod(param)
+        val view = param?.thisObject as View
+        val event = param.args!![0] as MotionEvent
+        if (event.action == MotionEvent.ACTION_DOWN) {
+          if (view is AdapterView<*>) {
+
+            val listener = XposedHelpers.getObjectField(view,"mOnItemClickListener").javaClass.name
+
+            ActivityHooker.setActionInfoToMenu("",
+                "${view.javaClass.name} ${view.id} \nListener: $listener")
+          }
 
         }
       }
