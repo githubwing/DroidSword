@@ -9,9 +9,12 @@ import de.robv.android.xposed.XposedBridge
 class LogUtils {
 
   companion object {
+    private var debug = false
     private val TAG = "DROID_SWORD"
     fun e(text: String) {
-      Log.e(TAG, text)
+      if (debug) {
+        Log.e(TAG, text)
+      }
     }
   }
 }
