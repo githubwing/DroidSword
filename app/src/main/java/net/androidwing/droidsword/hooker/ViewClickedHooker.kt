@@ -29,7 +29,9 @@ class ViewClickedHooker : IHooker {
         val event = param.args!![0] as MotionEvent
         if (event.action == MotionEvent.ACTION_UP) {
 
-          ActivityHooker.setActionInfoToMenu("", "${view.javaClass.name} ${view.id} ")
+          val listener = XposedHelpers.getObjectField(XposedHelpers.getObjectField(view,"mListenerInfo"),"mOnClickListener").javaClass.name
+
+          ActivityHooker.setActionInfoToMenu("", "${view.javaClass.name} ${view.id} \nListener: $listener")
 
           antiDisable(view)
 
