@@ -2,7 +2,7 @@
 [xposed module]
 # 利刃功能:
 
-## 1.快速定位Activity，以及点击View的信息
+## 1.快速定位Activity，以及点击View的信息(点击悬浮窗口获取Fragment)
 
 ![](https://github.com/githubwing/DroidSword/raw/master/img/pic.png)
 
