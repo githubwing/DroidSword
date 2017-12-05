@@ -81,7 +81,7 @@ class ViewClickedHooker : IHooker {
 
   private fun antiDisable(view: View) {
     //TODO 默认开启待添加配置文件
-    if (true) {
+    if (false) {
       ViewEnabler.antiDisable(view)
     }
   }
@@ -94,7 +94,7 @@ class ViewClickedHooker : IHooker {
     //TODO 默认开启待添加配置文件
     val event = param.args!![0] as MotionEvent
 
-    if (true) {
+    if (false) {
       TextViewChanger.showChangeDialog(targetView, event)
     }
   }

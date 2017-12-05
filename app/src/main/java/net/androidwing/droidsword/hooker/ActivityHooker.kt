@@ -6,11 +6,14 @@ import android.app.Fragment
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
+import android.os.Bundle
 import android.support.v7.widget.AppCompatImageHelper
 import android.text.TextUtils
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XC_LoadPackage
@@ -29,6 +32,8 @@ class ActivityHooker : IHooker {
 
         addTextView(activity)
 
+        //打印fragment有关信息
+        FragmentHooker().hookFragment(param)
 
 
       }
@@ -57,12 +62,23 @@ class ActivityHooker : IHooker {
   private fun genTextView(activity: Activity) {
     sTextView = TextView(activity)
     with(sTextView!!) {
-      textSize = 15f
+      textSize = 8f
       y = 48 * 2f
       setBackgroundColor(Color.parseColor("#cc888888"))
       setTextColor(Color.WHITE)
       layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,
           FrameLayout.LayoutParams.WRAP_CONTENT)
+    }
+
+    sTextView?.setOnClickListener {
+      var fragments = ""
+      for (fragment in sFragments) {
+        fragments += fragment + "\n"
+      }
+
+      if (fragments.isEmpty().not()) {
+        Toast.makeText(sTextView?.context, fragments, Toast.LENGTH_LONG).show()
+      }
     }
 
   }
@@ -71,9 +87,11 @@ class ActivityHooker : IHooker {
     var sTextView: TextView? = null
     private var sActivityName = ""
     private var sViewName = ""
+    var sFragments = HashSet<String>()
 
     fun setActionInfoToMenu(activityName: String, viewName: String) {
       sTextView?.text = getActionInfo(activityName, viewName)
+
     }
 
     private fun getActionInfo(activityName: String, viewName: String): CharSequence? {

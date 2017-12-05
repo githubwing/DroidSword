@@ -24,6 +24,8 @@ object TextViewChanger{
 
       if (targetView is TextView) {
         LogUtils.e("find textView target")
+
+
         if (targetView is EditText) {
 
           LogUtils.e("this view is editText ,pass")

@@ -9,7 +9,7 @@ import de.robv.android.xposed.XposedBridge
 class LogUtils {
 
   companion object {
-    private var debug = false
+    private var debug = true
     private val TAG = "DROID_SWORD"
     fun e(text: String) {
       if (debug) {

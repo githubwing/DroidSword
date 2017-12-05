@@ -26,16 +26,28 @@ import de.robv.android.xposed.XposedHelpers.findAndHookMethod
  */
 class FragmentHooker : IHooker {
   override fun hook(lp: XC_LoadPackage.LoadPackageParam) {
-    findAndHookMethod(Fragment::class.java, "onCreate", Bundle::class.java,
+
+
+
+  }
+
+  fun hookFragment(param: XC_MethodHook.MethodHookParam?) {
+    XposedHelpers.findAndHookMethod(
+        param?.thisObject?.javaClass?.classLoader?.loadClass("android.support.v4.app.Fragment"),
+        "onResume",
         object : XC_MethodHook() {
+          override fun afterHookedMethod(param: MethodHookParam?) {
+            super.afterHookedMethod(param)
 
-          override fun afterHookedMethod(param: XC_MethodHook.MethodHookParam?) {
+            LogUtils.e("fragment ${param?.thisObject?.javaClass?.name}")
+            ActivityHooker.sFragments.add(param?.thisObject?.javaClass?.name!!)
 
-            val fragment = param!!.thisObject as Fragment
-            LogUtils.e("hook the fragment ${fragment.javaClass.name}")
+          }
+
+          override fun beforeHookedMethod(param: MethodHookParam?) {
+            super.beforeHookedMethod(param)
           }
         })
-
   }
 
 }
