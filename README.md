@@ -9,7 +9,7 @@
 ## 2.点击悬浮窗口获取Fragment
 
 
-![](https://github.com/githubwing/DroidSword/raw/master/img/pic4.png)
+![](https://github.com/githubwing/DroidSword/raw/master/img/pic4.gif)
 
 ## 3.灰色按钮克星
 
