@@ -95,7 +95,7 @@ class ActivityHooker : IHooker {
 
       val pid = android.os.Process.myPid()
 
-      return "Activity: $sActivityName \nPid: $pid \nClick: $sViewName \nFragments:$sFragmentName"
+      return "Activity: $sActivityName \nPid: $pid \nClick: $sViewName \nFragment:$sFragmentName"
 
     }
   }
