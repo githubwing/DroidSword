@@ -32,7 +32,6 @@ class ActivityHooker : IHooker {
 
         addTextView(activity)
 
-        //打印fragment有关信息
         FragmentHooker().hookFragment(param)
 
 
@@ -70,29 +69,20 @@ class ActivityHooker : IHooker {
           FrameLayout.LayoutParams.WRAP_CONTENT)
     }
 
-    sTextView?.setOnClickListener {
-      var fragments = ""
-      for (fragment in sFragments) {
-        fragments += fragment + "\n"
-      }
-
-      if (fragments.isEmpty().not()) {
-        Toast.makeText(sTextView?.context, fragments, Toast.LENGTH_LONG).show()
-      }
-    }
-
   }
 
   companion object {
     var sTextView: TextView? = null
     private var sActivityName = ""
     private var sViewName = ""
-    var sFragments = HashSet<String>()
+
 
     fun setActionInfoToMenu(activityName: String, viewName: String) {
       sTextView?.text = getActionInfo(activityName, viewName)
 
     }
+
+    public var sFragmentName = ""
 
     private fun getActionInfo(activityName: String, viewName: String): CharSequence? {
       if (activityName.isEmpty().not()) {
@@ -105,7 +95,7 @@ class ActivityHooker : IHooker {
 
       val pid = android.os.Process.myPid()
 
-      return "Activity: $sActivityName \nPid: $pid \nClick: $sViewName"
+      return "Activity: $sActivityName \nPid: $pid \nClick: $sViewName \nFragments:$sFragmentName"
 
     }
   }
