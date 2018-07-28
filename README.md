@@ -1,7 +1,7 @@
 # DroidSword
 [xposed module]
 Download 
-https://github.com/githubwing/ZoomHeader/raw/master/DroidSword.apk
+https://github.com/githubwing/DroidSword/raw/master/DroidSword.apk
 
 # 利刃功能:
 
