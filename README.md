@@ -1,5 +1,8 @@
 # DroidSword
 [xposed module]
+Download 
+https://github.com/githubwing/ZoomHeader/raw/master/DroidSword.apk
+
 # 利刃功能:
 
 ## 1.快速定位Activity，以及点击View的信息
