@@ -1,24 +1,16 @@
 package net.androidwing.droidsword.hooker
 
 import android.app.Activity
-import android.app.AndroidAppHelper
-import android.app.Fragment
-import android.content.Context
 import android.graphics.Color
-import android.os.Build
-import android.os.Bundle
-import android.support.v7.widget.AppCompatImageHelper
-import android.text.TextUtils
-import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
-import android.widget.Toast
 import de.robv.android.xposed.XC_MethodHook
+import de.robv.android.xposed.XSharedPreferences
 import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XC_LoadPackage
-import net.androidwing.droidsword.utils.LogUtils
-import java.util.ArrayList
+import net.androidwing.droidsword.Config
 
 /**
  * Created  on 30/10/2017.
@@ -33,7 +25,6 @@ class ActivityHooker : IHooker {
         addTextView(activity)
 
         FragmentHooker().hookFragment(param)
-
 
       }
     })
@@ -78,8 +69,19 @@ class ActivityHooker : IHooker {
 
 
     fun setActionInfoToMenu(activityName: String, viewName: String) {
-      sTextView?.text = getActionInfo(activityName, viewName)
 
+      sTextView?.text = getActionInfo(activityName, viewName)
+      updateState()
+    }
+
+    private fun updateState() {
+      val xsp = XSharedPreferences(Config.PACKAGE_NAME, Config.SP_NAME)
+      xsp.makeWorldReadable()
+      val enable = xsp.getBoolean(Config.KEY_ENABLE, true)
+      val darkColor = xsp.getBoolean(Config.KEY_DARK_COLOR, false)
+      sTextView?.visibility = if (enable) View.VISIBLE else View.INVISIBLE
+      val backgroundColor = if (darkColor) "#000000" else "#cc888888"
+      sTextView?.setBackgroundColor(Color.parseColor(backgroundColor))
     }
 
     public var sFragmentName = ""

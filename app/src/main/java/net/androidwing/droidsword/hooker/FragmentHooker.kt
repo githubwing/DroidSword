@@ -16,7 +16,11 @@ class FragmentHooker : IHooker {
   }
 
   fun hookFragment(param: XC_MethodHook.MethodHookParam?) {
-
+    try {
+      param?.thisObject?.javaClass?.classLoader?.loadClass("android.support.v4.app.Fragment")
+    } catch (e: Exception) {
+      return
+    }
     XposedHelpers.findAndHookMethod(
         param?.thisObject?.javaClass?.classLoader?.loadClass("android.support.v4.app.Fragment"),
         "onResume",
@@ -24,7 +28,7 @@ class FragmentHooker : IHooker {
           override fun afterHookedMethod(param: MethodHookParam?) {
             super.afterHookedMethod(param)
             ActivityHooker.sFragmentName = (param?.thisObject?.javaClass?.name!!)
-            ActivityHooker.setActionInfoToMenu("","")
+            ActivityHooker.setActionInfoToMenu("", "")
 
           }
 
@@ -43,7 +47,7 @@ class FragmentHooker : IHooker {
               LogUtils.e("fragment showing:")
               LogUtils.e("fragment ${param?.thisObject?.javaClass?.name}")
               ActivityHooker.sFragmentName = (param?.thisObject?.javaClass?.name!!)
-              ActivityHooker.setActionInfoToMenu("","")
+              ActivityHooker.setActionInfoToMenu("", "")
             }
           }
 
