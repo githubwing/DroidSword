@@ -8,8 +8,10 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import de.robv.android.xposed.XC_MethodHook
+import de.robv.android.xposed.XSharedPreferences
 import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XC_LoadPackage
+import net.androidwing.droidsword.Config
 import net.androidwing.droidsword.func.TextViewChanger
 import net.androidwing.droidsword.func.ViewEnabler
 import net.androidwing.droidsword.utils.LogUtils
@@ -82,8 +84,11 @@ class ViewClickedHooker : IHooker {
   }
 
   private fun antiDisable(view: View) {
-    //TODO 默认开启待添加配置文件
-    if (false) {
+
+    val xsp = XSharedPreferences(Config.PACKAGE_NAME, Config.SP_NAME)
+    xsp.makeWorldReadable()
+
+    if (xsp.getBoolean(Config.KEY_VIEW_ENABLE,false)) {
       ViewEnabler.antiDisable(view)
     }
   }
@@ -93,10 +98,11 @@ class ViewClickedHooker : IHooker {
    */
   private fun showChangeTextDialog(targetView: View,
       param: XC_MethodHook.MethodHookParam) {
-    //TODO 默认开启待添加配置文件
     val event = param.args!![0] as MotionEvent
 
-    if (false) {
+    val xsp = XSharedPreferences(Config.PACKAGE_NAME, Config.SP_NAME)
+    xsp.makeWorldReadable()
+    if (xsp.getBoolean(Config.KEY_TEXT_CHANGER,false)) {
       TextViewChanger.showChangeDialog(targetView, event)
     }
   }

@@ -49,6 +49,27 @@
           />
     </LinearLayout>
     <LinearLayout
+      android:layout_marginTop="10dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="深色模式"
+        />
+    <View
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"/>
+    <Switch
+        android:id="@+id/sw_dark_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+  </LinearLayout>
+
+    <LinearLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,14 +77,34 @@
       <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="深色模式"
+          android:text="灰色按钮克星"
           />
       <View
           android:layout_weight="1"
           android:layout_width="0dp"
           android:layout_height="1dp"/>
       <Switch
-          android:id="@+id/sw_dark_color"
+          android:id="@+id/sw_view_enabler"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="文字修改"
+          />
+      <View
+          android:layout_weight="1"
+          android:layout_width="0dp"
+          android:layout_height="1dp"/>
+      <Switch
+          android:id="@+id/sw_text_changer"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           />

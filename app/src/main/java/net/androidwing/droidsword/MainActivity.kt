@@ -37,8 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     val sp = getSharedPreferences(Config.SP_NAME, Context.MODE_WORLD_READABLE)
     if (sp.getBoolean(Config.KEY_INIT, true)) {
-      sp.edit().putBoolean(Config.KEY_INIT, false).putBoolean(Config.KEY_ENABLE, true).putBoolean(
-          Config.KEY_DARK_COLOR, false).apply()
+      sp.edit()
+          .putBoolean(Config.KEY_INIT, false)
+          .putBoolean(Config.KEY_ENABLE, true)
+          .putBoolean(Config.KEY_DARK_COLOR, false)
+          .putBoolean(Config.KEY_TEXT_CHANGER, false)
+          .putBoolean(Config.KEY_VIEW_ENABLE, false)
+          .apply()
     }
 
     val darkColorSwitch = findViewById(R.id.sw_dark_color) as Switch
@@ -59,6 +64,19 @@ class MainActivity : AppCompatActivity() {
       //call for refresh state
       onResume()
     }
+
+    val textChangerSwitch = findViewById(R.id.sw_text_changer) as Switch
+    textChangerSwitch.isChecked = sp.getBoolean(Config.KEY_TEXT_CHANGER, false)
+    textChangerSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+      sp.edit().putBoolean(Config.KEY_TEXT_CHANGER, isChecked).apply()
+    }
+
+    val viewEnableSwitch = findViewById(R.id.sw_view_enabler) as Switch
+    viewEnableSwitch.isChecked = sp.getBoolean(Config.KEY_VIEW_ENABLE, false)
+    viewEnableSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+      sp.edit().putBoolean(Config.KEY_VIEW_ENABLE, isChecked).apply()
+    }
+
   }
 
   //this method is for hook

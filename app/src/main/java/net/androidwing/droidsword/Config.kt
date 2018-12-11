@@ -9,4 +9,6 @@ object Config{
   val KEY_INIT = "init"
   val KEY_ENABLE = "enable"
   val KEY_DARK_COLOR = "dark_color"
+  val KEY_TEXT_CHANGER = "text_changer"
+  val KEY_VIEW_ENABLE = "view_enable"
 }
