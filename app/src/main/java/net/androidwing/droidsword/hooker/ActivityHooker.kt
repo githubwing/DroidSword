@@ -25,7 +25,7 @@ class ActivityHooker : IHooker {
         addTextView(activity)
 
         FragmentHooker().hookFragment(param)
-
+        DialogHooker().hookDialog()
       }
     })
   }

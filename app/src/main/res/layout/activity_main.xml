@@ -16,6 +16,7 @@
       android:orientation="vertical"
       >
     <TextView
+        android:textSize="16sp"
         android:id="@+id/tv_is_hook"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +30,7 @@
         />
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
