@@ -1,5 +1,8 @@
 # DroidSword
 [xposed module]
+
+逆向神器，快速定位UI信息。
+
 Download 
 https://github.com/githubwing/DroidSword/raw/master/DroidSword.apk
 
