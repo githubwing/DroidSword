@@ -1,3 +1,11 @@
 <resources>
   <string name="app_name">DroidSword</string>
+  <string name="close">Close</string>
+  <string name="dark_mode">Dark Mode</string>
+  <string name="anti_disable">Anti Disable</string>
+  <string name="text_changer">Text Changer</string>
+  <string name="not_active">Xposed Module not activated.</string>
+  <string name="go">GO</string>
+  <string name="link">Source Code:https://github.com/githubwing/DroidSword</string>
+  <string name="no_xposed_installer">could not found the Xposed Installer!</string>
 </resources>

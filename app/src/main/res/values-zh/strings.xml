@@ -1,0 +1,11 @@
+<resources>
+  <string name="app_name">DroidSword</string>
+  <string name="close">关闭遮罩</string>
+  <string name="dark_mode">深色模式</string>
+  <string name="anti_disable">灰色按钮克星</string>
+  <string name="text_changer">文字修改</string>
+  <string name="not_active">插件未激活，请前往激活插件</string>
+  <string name="go">前往</string>
+  <string name="link">源码地址:https://github.com/githubwing/DroidSword</string>
+  <string name="no_xposed_installer">啊哦，你好像没有安装XposedInstaller</string>
+</resources>
