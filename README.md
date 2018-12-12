@@ -3,6 +3,8 @@
 
 逆向神器，快速定位UI信息。
 
+top activity, top fragment , top dialog ,view click listener 
+
 Download 
 https://github.com/githubwing/DroidSword/raw/master/DroidSword.apk
 
