@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
     val button = findViewById(R.id.btn_startInstaller)
     if (isHook()) {
       (findViewById(R.id.tv_is_hook) as TextView).text = "插件已激活,请放心使用"
-      button.visibility = View.GONE
+      button?.visibility = View.GONE
     }
 
-    button.setOnClickListener {
+    button?.setOnClickListener {
       val intent = Intent()
       val componentName = ComponentName("de.robv.android.xposed.installer",
           "de.robv.android.xposed.installer.WelcomeActivity")
@@ -57,9 +57,9 @@ class MainActivity : AppCompatActivity() {
 
 
     val enableSwitch = findViewById(R.id.sw_enable) as Switch
-    enableSwitch.isChecked = sp.getBoolean(Config.KEY_ENABLE, false)
+    enableSwitch.isChecked = !sp.getBoolean(Config.KEY_ENABLE, false)
     enableSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
-      sp.edit().putBoolean(Config.KEY_ENABLE, isChecked).apply()
+      sp.edit().putBoolean(Config.KEY_ENABLE, !isChecked).apply()
 
       //call for refresh state
       onResume()
