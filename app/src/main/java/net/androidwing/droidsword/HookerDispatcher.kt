@@ -1,20 +1,18 @@
 package net.androidwing.droidsword
 
 import de.robv.android.xposed.XC_MethodHook
-import de.robv.android.xposed.XSharedPreferences
 import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 import net.androidwing.droidsword.hooker.ActivityHooker
 import net.androidwing.droidsword.hooker.FragmentHooker
 import net.androidwing.droidsword.hooker.ViewClickedHooker
 import net.androidwing.droidsword.utils.LogUtils
-import net.androidwing.hotxposed.IHookerDispatcher
 
 /**
  * Created  on 2018/12/11.
  */
-class HookerDispatcher : IHookerDispatcher {
-  override fun dispatch(lpparam: XC_LoadPackage.LoadPackageParam?) {
+class HookerDispatcher  {
+   fun dispatch(lpparam: XC_LoadPackage.LoadPackageParam?) {
 
     ViewClickedHooker().hook(lpparam!!)
     ActivityHooker().hook(lpparam)
