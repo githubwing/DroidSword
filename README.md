@@ -6,7 +6,7 @@
 top activity, top fragment , top dialog ,view click listener 
 
 Download 
-https://github.com/githubwing/DroidSword/raw/master/DroidSword.apk
+https://github.com/githubwing/DroidSword/raw/master/app/release/app-release.apk
 
 # 利刃功能:
 
