@@ -4,9 +4,16 @@
   <string name="dark_mode">Dark Mode</string>
   <string name="anti_disable">Anti Disable</string>
   <string name="text_changer">Text Changer</string>
-  <string name="app_debug">Debug App</string>
+  <string name="app_debug">Debug All Apps</string>
   <string name="not_active">Xposed Module not activated.</string>
   <string name="go">GO</string>
-  <string name="link">Source Code:https://github.com/githubwing/DroidSword</string>
+  <string name="qq_group">link to join qq group</string>
   <string name="no_xposed_installer">could not found the Xposed Installer!</string>
+  <string name="restart_target">Target App changed , restart to enable</string>
+  <string name="no_qq">could not found the QQ</string>
+  <string name="select">select</string>
+  <string name="change">change</string>
+  <string name="target_help">For compatible,DroidSword wills on the config app,kill the app process to enable</string>
+  <string name="target_app">Target App</string>
+  <string name="base_fun">Base Ability </string>
 </resources>

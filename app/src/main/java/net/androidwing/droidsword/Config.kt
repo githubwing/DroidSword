@@ -12,4 +12,5 @@ object Config{
   val KEY_TEXT_CHANGER = "text_changer"
   val KEY_VIEW_ENABLE = "view_enable"
   val KEY_APP_DEBUG = "app_debug"
+  val ENABLE_PACKAGE_NAME = "enable_package_name"
 }

@@ -5,8 +5,16 @@
   <string name="anti_disable">灰色按钮克星</string>
   <string name="text_changer">文字修改</string>
   <string name="not_active">插件未激活，请前往激活插件</string>
-  <string name="app_debug">调试应用</string>
+  <string name="app_debug">调试所有应用</string>
   <string name="go">前往</string>
-  <string name="link">源码地址:https://github.com/githubwing/DroidSword</string>
+  <string name="qq_group">点击加入qq交流群</string>
   <string name="no_xposed_installer">啊哦，你好像没有安装XposedInstaller</string>
+  <string name="restart_target">目标应用已配置，请强行停止目标应用后重新打开以生效</string>
+  <string name="no_qq">你好像没有安装QQ</string>
+  <string name="select">选择</string>
+  <string name="change">切换</string>
+  <string name="target_help">为了防止部分App不兼容导致的系统崩溃,\n\nDroidSword只针对下方自选App生效。\n\n选择应用后，强行停止并且重启即可生效配置。</string>
+  <string name="target_app">目标应用</string>
+  <string name="base_fun">基础能力</string>
+
 </resources>

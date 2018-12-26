@@ -14,4 +14,11 @@ object XSP {
     xsp.makeWorldReadable()
     return xsp.getBoolean(key,defaultValue)
   }
+
+  fun getString(key: String, defaultValue: String):String {
+    //防止缓存 每次都new
+    val xsp = XSharedPreferences(Config.PACKAGE_NAME, Config.SP_NAME)
+    xsp.makeWorldReadable()
+    return xsp.getString(key,defaultValue)
+  }
 }

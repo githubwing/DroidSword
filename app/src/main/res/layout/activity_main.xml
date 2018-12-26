@@ -8,17 +8,25 @@
     tools:context="net.androidwing.droidsword.MainActivity"
     >
   <LinearLayout
-
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_margin="16dp"
       android:orientation="vertical"
       >
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/base_fun"
+        android:textColor="#000"
+        android:textSize="16dp"
+        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="vertical"
         >
@@ -129,6 +137,61 @@
             />
       </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_target_help"
+        android:gravity="center_vertical"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/target_app"
+          android:textColor="#000"
+          android:textSize="16dp"
+          />
+      <ImageView
+          android:layout_marginLeft="5dp"
+          android:src="@drawable/ic_help"
+          android:layout_width="15dp"
+          android:layout_height="15dp"
+          />
+    </LinearLayout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+      <ImageView
+          android:id="@+id/iv_module"
+          android:layout_width="40dp"
+          android:layout_height="40dp"
+          />
+      <TextView
+          android:id="@+id/tv_module_name"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="10dp"
+          />
+      <View
+          android:layout_width="1dp"
+          android:layout_height="1dp"
+          android:layout_weight="1"
+          />
+      <TextView
+          android:id="@+id/tv_change"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/colorPrimary"
+          />
+    </LinearLayout>
+
 
     <View
         android:layout_width="1dp"
@@ -136,42 +199,45 @@
         android:layout_weight="1"
         />
     <TextView
-        android:layout_marginBottom="58dp"
-        android:layout_width="wrap_content"
+        android:gravity="right"
+        android:id="@+id/tv_qq_group"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:autoLink="web"
-        android:text="@string/link"
+        android:layout_marginBottom="58dp"
+        android:text="@string/qq_group"
+        android:textColor="@color/colorPrimary"
         />
 
   </LinearLayout>
 
   <LinearLayout
       android:id="@+id/ll_not_active"
-      android:paddingLeft="16dp"
-      android:paddingRight="16dp"
-      android:gravity="center_vertical"
-      android:background="#323232"
-      android:layout_gravity="bottom"
       android:layout_width="match_parent"
       android:layout_height="48dp"
+      android:layout_gravity="bottom"
+      android:background="#323232"
+      android:gravity="center_vertical"
+      android:paddingLeft="16dp"
+      android:paddingRight="16dp"
       >
     <TextView
-        android:textColor="#fff"
-        android:text="@string/not_active"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/not_active"
+        android:textColor="#fff"
         />
     <View
-        android:layout_weight="1"
         android:layout_width="0dp"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        />
     <TextView
         android:id="@+id/tv_start_xi"
-        android:textColor="@color/colorAccent"
-        android:text="@string/go"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/go"
+        android:textColor="@color/colorAccent"
         />
   </LinearLayout>
 </FrameLayout>
