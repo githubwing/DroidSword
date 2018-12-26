@@ -15,6 +15,7 @@ import net.androidwing.droidsword.Config
 import net.androidwing.droidsword.func.TextViewChanger
 import net.androidwing.droidsword.func.ViewEnabler
 import net.androidwing.droidsword.utils.LogUtils
+import net.androidwing.droidsword.utils.XSP
 
 /**
  * Created  on 28/10/2017.
@@ -85,10 +86,7 @@ class ViewClickedHooker : IHooker {
 
   private fun antiDisable(view: View) {
 
-    val xsp = XSharedPreferences(Config.PACKAGE_NAME, Config.SP_NAME)
-    xsp.makeWorldReadable()
-
-    if (xsp.getBoolean(Config.KEY_VIEW_ENABLE,false)) {
+    if (XSP.getBoolean(Config.KEY_VIEW_ENABLE,false)) {
       ViewEnabler.antiDisable(view)
     }
   }
@@ -100,9 +98,7 @@ class ViewClickedHooker : IHooker {
       param: XC_MethodHook.MethodHookParam) {
     val event = param.args!![0] as MotionEvent
 
-    val xsp = XSharedPreferences(Config.PACKAGE_NAME, Config.SP_NAME)
-    xsp.makeWorldReadable()
-    if (xsp.getBoolean(Config.KEY_TEXT_CHANGER,false)) {
+    if (XSP.getBoolean(Config.KEY_TEXT_CHANGER,false)) {
       TextViewChanger.showChangeDialog(targetView, event)
     }
   }

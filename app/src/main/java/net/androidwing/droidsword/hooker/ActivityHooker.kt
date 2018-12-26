@@ -11,6 +11,7 @@ import de.robv.android.xposed.XSharedPreferences
 import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 import net.androidwing.droidsword.Config
+import net.androidwing.droidsword.utils.XSP
 
 /**
  * Created  on 30/10/2017.
@@ -25,7 +26,9 @@ class ActivityHooker : IHooker {
         addTextView(activity)
 
         FragmentHooker().hookFragment(param)
-        DialogHooker().hookDialog()
+
+        //TODO hook dialog 会和问文字修改冲突
+//        DialogHooker().hookDialog()
       }
     })
   }
@@ -75,10 +78,9 @@ class ActivityHooker : IHooker {
     }
 
     private fun updateState() {
-      val xsp = XSharedPreferences(Config.PACKAGE_NAME, Config.SP_NAME)
-      xsp.makeWorldReadable()
-      val enable = xsp.getBoolean(Config.KEY_ENABLE, true)
-      val darkColor = xsp.getBoolean(Config.KEY_DARK_COLOR, false)
+
+      val enable = XSP.getBoolean(Config.KEY_ENABLE, true)
+      val darkColor = XSP.getBoolean(Config.KEY_DARK_COLOR, false)
       sTextView?.visibility = if (enable) View.VISIBLE else View.INVISIBLE
       val backgroundColor = if (darkColor) "#000000" else "#cc888888"
       sTextView?.setBackgroundColor(Color.parseColor(backgroundColor))

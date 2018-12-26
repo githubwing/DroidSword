@@ -4,6 +4,7 @@ import de.robv.android.xposed.XC_MethodHook
 import de.robv.android.xposed.XposedHelpers
 import de.robv.android.xposed.callbacks.XC_LoadPackage
 import net.androidwing.droidsword.hooker.ActivityHooker
+import net.androidwing.droidsword.hooker.DebugHooker
 import net.androidwing.droidsword.hooker.FragmentHooker
 import net.androidwing.droidsword.hooker.ViewClickedHooker
 import net.androidwing.droidsword.utils.LogUtils
@@ -11,12 +12,13 @@ import net.androidwing.droidsword.utils.LogUtils
 /**
  * Created  on 2018/12/11.
  */
-class HookerDispatcher  {
-   fun dispatch(lpparam: XC_LoadPackage.LoadPackageParam?) {
+class HookerDispatcher {
+  fun dispatch(lpparam: XC_LoadPackage.LoadPackageParam?) {
 
     ViewClickedHooker().hook(lpparam!!)
     ActivityHooker().hook(lpparam)
     FragmentHooker().hook(lpparam)
+    DebugHooker().hook(lpparam)
 
     if (lpparam.packageName == BuildConfig.APPLICATION_ID) {
       LogUtils.e("inject isHook")

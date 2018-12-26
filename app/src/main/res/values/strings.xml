@@ -4,6 +4,7 @@
   <string name="dark_mode">Dark Mode</string>
   <string name="anti_disable">Anti Disable</string>
   <string name="text_changer">Text Changer</string>
+  <string name="app_debug">Debug App</string>
   <string name="not_active">Xposed Module not activated.</string>
   <string name="go">GO</string>
   <string name="link">Source Code:https://github.com/githubwing/DroidSword</string>

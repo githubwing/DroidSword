@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
       try {
         startActivity(intent)
       } catch (e: Exception) {
-        Toast.makeText(MainActivity@ this, getString(R.string.no_xposed_installer), Toast.LENGTH_SHORT).show()
+        Toast.makeText(MainActivity@this, getString(R.string.no_xposed_installer), Toast.LENGTH_SHORT).show()
       }
     }
 
@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
           .putBoolean(Config.KEY_DARK_COLOR, false)
           .putBoolean(Config.KEY_TEXT_CHANGER, false)
           .putBoolean(Config.KEY_VIEW_ENABLE, false)
+          .putBoolean(Config.KEY_APP_DEBUG,false)
           .apply()
     }
 
@@ -73,6 +74,13 @@ class MainActivity : AppCompatActivity() {
     viewEnableSwitch.isChecked = sp.getBoolean(Config.KEY_VIEW_ENABLE, false)
     viewEnableSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
       sp.edit().putBoolean(Config.KEY_VIEW_ENABLE, isChecked).apply()
+    }
+
+
+    val appDebugSwitch = findViewById(R.id.sw_app_debug) as Switch
+    appDebugSwitch.isChecked = sp.getBoolean(Config.KEY_APP_DEBUG, false)
+    appDebugSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+      sp.edit().putBoolean(Config.KEY_APP_DEBUG, isChecked).apply()
     }
 
   }
