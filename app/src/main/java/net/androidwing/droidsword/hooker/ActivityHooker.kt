@@ -27,8 +27,10 @@ class ActivityHooker : IHooker {
 
         FragmentHooker().hookFragment(param)
 
-        //TODO hook dialog 会和问文字修改冲突
-//        DialogHooker().hookDialog()
+        // hook dialog 会和问文字修改冲突
+        if (!XSP.getBoolean(Config.KEY_VIEW_ENABLE, false)) {
+          DialogHooker().hookDialog()
+        }
       }
     })
   }

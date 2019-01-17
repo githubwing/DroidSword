@@ -104,6 +104,15 @@ class MainActivity : AppCompatActivity() {
     container.orientation = LinearLayout.VERTICAL
 
     val appList = PackageUtil.getAppList(packageManager)
+    val emptyView = LayoutInflater.from(this).inflate(R.layout.item_app, null)
+    (emptyView.findViewById(R.id.tv_app_name) as TextView).text = "无"
+    emptyView.setOnClickListener {
+      sp.edit().putString(Config.ENABLE_PACKAGE_NAME,"").apply()
+      dialog.dismiss()
+      updateTargetAppUI()
+      Toast.makeText(MainActivity@this,getString(R.string.restart_target),Toast.LENGTH_LONG).show()
+    }
+    container.addView(emptyView)
 
     appList.forEach {
       val appInfo = it
@@ -160,6 +169,9 @@ class MainActivity : AppCompatActivity() {
     val textChangerSwitch = findViewById(R.id.sw_text_changer) as Switch
     textChangerSwitch.isChecked = sp.getBoolean(Config.KEY_TEXT_CHANGER, false)
     textChangerSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+      if(isChecked){
+        Toast.makeText(MainActivity@this,"开启文字修改后，会关闭dialog显示,并且可能影响交互，请谨慎",Toast.LENGTH_LONG).show()
+      }
       sp.edit().putBoolean(Config.KEY_TEXT_CHANGER, isChecked).apply()
     }
 

@@ -37,6 +37,7 @@ class DialogHooker {
                 parent.removeView(sTextView)
               }
             }
+
             decor.addView(sTextView)
             sTextView?.text = dialog.javaClass.name
             sTextView?.bringToFront()
